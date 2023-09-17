@@ -1,0 +1,33 @@
+<?php
+
+use App\Models\Dropdown;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('dropdown_items', function (Blueprint $table) {
+            $table->id();
+            $table->string('title', 2048);
+            $table->string('slug', 2048);
+            $table->longText('body');
+            $table->integer('sort')->nullable();
+            $table->foreignIdFor(Dropdown::class, 'dropdown_id')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('dropdown_items');
+    }
+};
