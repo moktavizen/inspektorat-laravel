@@ -1,0 +1,20 @@
+{
+  "public/images/contact.png": {
+    "file": "assets/contact-eaa0982d.png",
+    "src": "public/images/contact.png"
+  },
+  "public/images/hero.png": {
+    "file": "assets/hero-6522c12d.png",
+    "src": "public/images/hero.png"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-3b033e21.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-82581d7c.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}
