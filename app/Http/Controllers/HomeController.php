@@ -30,7 +30,7 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showMenu(Menu $menu)
+    public function showMenu(Menu $menu): View
     {
         return view('menu.view', ['menu' => $menu]);
     }
@@ -38,7 +38,7 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showDropdownItem(DropdownItem $dropdown_item)
+    public function showDropdownItem(DropdownItem $dropdown_item): View
     {
         return view('dropdown.view', ['dropdown_item' => $dropdown_item]);
     }
@@ -46,7 +46,7 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showService(Service $service)
+    public function showService(Service $service): View
     {
         return view('service.view', ['service' => $service]);
     }
@@ -54,7 +54,7 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showAgenda(Agenda $agenda)
+    public function showAgenda(Agenda $agenda): View
     {
         return view('agenda.view', ['agenda' => $agenda]);
     }
@@ -62,7 +62,7 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showPost(Post $post)
+    public function showPost(Post $post): View
     {
         return view('post.view', ['post' => $post]);
     }
