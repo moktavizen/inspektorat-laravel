@@ -1,6 +1,6 @@
 <x-app-layout>
     <section class="py-8 bg-neutral-50 md:py-20">
-        <div class="container px-4 mx-auto text-center xl:max-w-7xl md:px-8 min-h-[30vh]">
+        <div class="container px-4 mx-auto text-center xl:max-w-7xl md:px-8 min-h-[50vh]">
             <h2 class="text-2xl font-bold lg:text-4xl text-neutral-800">
                 Pengumuman Inspektorat
             </h2>
