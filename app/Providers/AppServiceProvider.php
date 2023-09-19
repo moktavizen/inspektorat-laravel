@@ -22,14 +22,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::share(
-            'services',
-            Service::orderBy('updated_at', 'desc')
-                ->get()
-        );
-        View::share(
-            'contacts',
-            Contact::get()
-        );
+        if (!app()->runningInConsole() || app()->runningUnitTests()) {
+            View::share(
+                'services',
+                Service::orderBy('updated_at', 'desc')
+                    ->get()
+            );
+            View::share(
+                'contacts',
+                Contact::get()
+            );
+        }
     }
 }
