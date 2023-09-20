@@ -45,9 +45,6 @@ class PostResource extends Resource
                             ->required()
                             ->maxLength(2048),
                         TinyEditor::make('body')
-                            ->fileAttachmentsDisk('local')
-                            ->fileAttachmentsVisibility('public')
-                            ->fileAttachmentsDirectory('public')
                             ->label('Content')
                             ->required()
                             ->columnSpanFull(),
