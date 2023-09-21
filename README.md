@@ -1,13 +1,17 @@
 # Inspektorat Gresik Filament CMS
 
 ## Local Environment
+
 Instruction using Laravel Sail Docker
+
 ### 1. Clone the project
+
 ```bash
 git clone https://github.com/av1st78/inspektorat-gresik.git
 ```
 
 ### 2. Run `composer install`
+
 Navigate into project folder using terminal and run
 
 ```bash
@@ -55,19 +59,26 @@ php artisan make:filament-user
 ```
 
 ## Production Environment
+
 Instruction using SSH on Ubuntu 22.04 VM
+
 ### 1. SSH and update the server
+
 ```bash
 ssh -i <keypair-name> <host@ip>
 sudo su
 apt update && apt upgrade
 reboot
 ```
+
 ### 2. Install required PHP extension for Laravel
+
 ```bash
 apt install openssl php-bcmath php-curl php-json php-mbstring php-mysql php-tokenizer php-xml php-zip php-fpm
 ```
+
 ### 3. Install Composer
+
 ```bash
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
@@ -75,7 +86,9 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 mv composer.phar /usr/local/bin/composer
 ```
+
 ### 4. Install Node.js
+
 ```bash
 apt update
 apt install -y ca-certificates curl gnupg
@@ -86,18 +99,24 @@ echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.co
 apt update
 apt install nodejs -y
 ```
+
 ### 5. Install NGINX
+
 ```bash
 apt purge apache2
 apt autoremove
 apt install nginx
 ```
+
 ### 6. Clone the project
+
 ```bash
 cd /var/www/
 git clone https://github.com/av1st78/inspektorat-gresik.git
 ```
+
 ### 7. Configure directory permissions
+
 ```bash
 chown -R www-data:www-data /path/to/your/laravel/root/directory
 usermod -a -G www-data ubuntu
@@ -106,7 +125,9 @@ find /path/to/your/laravel/root/directory -type d -exec chmod 755 {} \;
 chgrp -R www-data storage bootstrap/cache
 chmod -R ug+rwx storage bootstrap/cache
 ```
+
 ### 8. Configure NGINX
+
 ```bash
 nano /etc/nginx/sites-available/<project-name>
 ```
@@ -149,12 +170,16 @@ ln -s /etc/nginx/sites-available/<project-name> /etc/nginx/sites-enabled/
 nginx -t
 systemctl reload nginx
 ```
+
 ### 9. Install project dependecies
+
 ```bash
 composer install --optimize-autoloader
 npm install --production
 ```
+
 ### 10. Configure .env
+
 ```bash
 cp .env.example .env
 php artisan key:generate --ansi
@@ -176,15 +201,22 @@ DB_PASSWORD=<db-password>
 php artisan storage:link
 php artisan migrate:fresh --seed
 ```
+
 ### 11. Laravel optimization
+
 ```bash
 php artisan config:cache
 php artisan event:cache
 php artisan route:cache
 php artisan view:cache
 ```
+
+---
+
 Instruction using hpanel
+
 ### 1. SSH, clone the project, and replace public_html link
+
 ```bash
 ssh -p <port> <host@ip>
 cd domains/
@@ -200,14 +232,18 @@ ln -s public public_html
 <install-composer>
 php composer.phar install
 ```
+
 ### 2. Install Composer
+
 ```bash
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
 ```
+
 ### 3. Install Node.js
+
 ```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 source ~/.bashrc
@@ -216,12 +252,16 @@ nvm ls-remote
 nvm install <version>
 node --v
 ```
+
 ### 4. Install project dependencies
+
 ```bash
 php composer.phar install --optimize-autoloader
 npm install --production
 ```
+
 ### 5. Configure .env
+
 ```bash
 cp .env.example .env
 php artisan key:generate --ansi
@@ -243,7 +283,9 @@ DB_PASSWORD=<db-password>
 php artisan storage:link
 php artisan migrate:fresh --seed
 ```
+
 ### 6. Laravel optimization
+
 ```bash
 php artisan config:cache
 php artisan event:cache
