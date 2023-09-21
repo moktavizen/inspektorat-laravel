@@ -120,6 +120,7 @@ git clone https://github.com/av1st78/inspektorat-gresik.git
 ### 7. Configure directory permissions
 
 ```bash
+cd /path/to/your/laravel/root/directory
 chown -R www-data:www-data /path/to/your/laravel/root/directory
 usermod -a -G www-data ubuntu
 find /path/to/your/laravel/root/directory -type f -exec chmod 644 {} \;    
