@@ -79,7 +79,15 @@ sudo su
 apt install openssl php-bcmath php-curl php-json php-mbstring php-mysql php-tokenizer php-xml php-zip php-fpm
 ```
 
-### 3. Install Composer
+### 3. Install NGINX
+
+```bash
+apt purge apache2
+apt autoremove
+apt install nginx
+```
+
+### 4. Install Composer
 
 ```bash
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -89,7 +97,7 @@ php -r "unlink('composer-setup.php');"
 mv composer.phar /usr/local/bin/composer
 ```
 
-### 4. Install Node.js
+### 5. Install Node.js
 
 ```bash
 apt update
@@ -100,14 +108,6 @@ NODE_MAJOR=18
 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
 apt update
 apt install nodejs -y
-```
-
-### 5. Install NGINX
-
-```bash
-apt purge apache2
-apt autoremove
-apt install nginx
 ```
 
 ### 6. Clone the project
