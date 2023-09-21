@@ -74,6 +74,8 @@ reboot
 ### 2. Install required PHP extension for Laravel
 
 ```bash
+ssh -i <keypair-name> <host@ip>
+sudo su
 apt install openssl php-bcmath php-curl php-json php-mbstring php-mysql php-tokenizer php-xml php-zip php-fpm
 ```
 
