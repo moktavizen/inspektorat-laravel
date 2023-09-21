@@ -67,7 +67,7 @@ Instruction using SSH on Ubuntu 22.04 VM
 ```bash
 ssh -i <keypair-name> <host@ip>
 sudo su
-apt update && apt upgrade
+apt update && apt upgrade -y
 reboot
 ```
 
