@@ -76,7 +76,7 @@ reboot
 ```bash
 ssh -i <keypair-name> <host@ip>
 sudo su
-apt install openssl php-bcmath php-curl php-json php-mbstring php-mysql php-tokenizer php-xml php-zip php-fpm
+apt install openssl php-bcmath php-curl php-json php-mbstring php-mysql php-tokenizer php-xml php-zip php-fpm -y
 ```
 
 ### 3. Install NGINX
@@ -84,7 +84,7 @@ apt install openssl php-bcmath php-curl php-json php-mbstring php-mysql php-toke
 ```bash
 apt purge apache2
 apt autoremove
-apt install nginx
+apt install nginx -y
 ```
 
 ### 4. Install Composer
