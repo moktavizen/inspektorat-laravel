@@ -229,8 +229,6 @@ cd ~
 ln -s domains/<domain-name>/public public_html
 cd domains/<domain-name>
 ln -s public public_html
-<install-composer>
-php composer.phar install
 ```
 
 ### 2. Install Composer
