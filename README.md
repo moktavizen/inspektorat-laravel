@@ -1,68 +1,251 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Inspektorat Gresik Filament CMS
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Local Environment
+Instruction using Laravel Sail Docker
+### 1. Clone the project
+```bash
+git clone https://github.com/av1st78/inspektorat-gresik.git
+```
 
-## About Laravel
+### 2. Run `composer install`
+Navigate into project folder using terminal and run
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+```bash
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php82-composer:latest \
+    composer install --ignore-platform-reqs
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 3. Copy `.env.example` into `.env`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```bash
+cp .env.example .env
+```
 
-## Learning Laravel
+### 4. Start the project in detached mode
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```bash
+./vendor/bin/sail up -d
+```
+From now on whenever you want to run artisan command you should do this from the container. <br>
+Access to the docker container
+```bash
+./vendor/bin/sail bash
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 5. Set encryption key
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+php artisan key:generate --ansi
+```
 
-## Laravel Sponsors
+### 6. Run migrations
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```bash
+php artisan migrate
+```
 
-### Premium Partners
+### 7. Add Filament Admin user
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```bash
+php artisan make:filament-user
+```
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-# inspektorat-gresik
+## Production Environment
+Instruction using SSH on Ubuntu 22.04 VM
+### 1. SSH and update the server
+```bash
+ssh -i <keypair-name> <host@ip>
+sudo su
+apt update && apt upgrade
+reboot
+```
+### 2. Install required PHP extension for Laravel
+```bash
+apt install openssl php-bcmath php-curl php-json php-mbstring php-mysql php-tokenizer php-xml php-zip php-fpm
+```
+### 3. Install Composer
+```bash
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+mv composer.phar /usr/local/bin/composer
+```
+### 4. Install Node.js
+```bash
+apt update
+apt install -y ca-certificates curl gnupg
+mkdir -p /etc/apt/keyrings
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+NODE_MAJOR=18
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
+apt update
+apt install nodejs -y
+```
+### 5. Install NGINX
+```bash
+apt purge apache2
+apt autoremove
+apt install nginx
+```
+### 6. Clone the project
+```bash
+cd /var/www/
+git clone https://github.com/av1st78/inspektorat-gresik.git
+```
+### 7. Configure directory permissions
+```bash
+chown -R www-data:www-data /path/to/your/laravel/root/directory
+usermod -a -G www-data ubuntu
+find /path/to/your/laravel/root/directory -type f -exec chmod 644 {} \;    
+find /path/to/your/laravel/root/directory -type d -exec chmod 755 {} \;
+chgrp -R www-data storage bootstrap/cache
+chmod -R ug+rwx storage bootstrap/cache
+```
+### 8. Configure NGINX
+```bash
+nano /etc/nginx/sites-available/<project-name>
+```
+```nginx
+ server {
+        listen 80;
+        listen [::]:80;
+        server_name <server_domain_or_IP>;
+        root /var/www/<project-name>/public;
+    
+        add_header X-Frame-Options "SAMEORIGIN";
+        add_header X-Content-Type-Options "nosniff";
+    
+        index index.php;
+    
+        charset utf-8;
+    
+        location / {
+            try_files $uri $uri/ /index.php?$query_string;
+        }
+    
+        location = /favicon.ico { access_log off; log_not_found off; }
+        location = /robots.txt  { access_log off; log_not_found off; }
+    
+        error_page 404 /index.php;
+    
+        location ~ \.php$ {
+            fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+            include fastcgi_params;
+        }
+    
+        location ~ /\.(?!well-known).* {
+            deny all;
+        }
+    }
+```
+```bash
+ln -s /etc/nginx/sites-available/<project-name> /etc/nginx/sites-enabled/
+nginx -t
+systemctl reload nginx
+```
+### 9. Install project dependecies
+```bash
+composer install --optimize-autoloader
+npm install --production
+```
+### 10. Configure .env
+```bash
+cp .env.example .env
+php artisan key:generate --ansi
+nano .env
+```
+```bash
+APP_NAME="<project-name>"
+APP_ENV=production
+APP_DEBUG = false
+APP_URL=http<with 's' if ssl>://<server_domain_or_IP>
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=<db-database>
+DB_USERNAME=<db-username>
+DB_PASSWORD=<db-password>
+```
+```bash
+php artisan storage:link
+php artisan migrate:fresh --seed
+```
+### 11. Laravel optimization
+```bash
+php artisan config:cache
+php artisan event:cache
+php artisan route:cache
+php artisan view:cache
+```
+Instruction using hpanel
+### 1. SSH, clone the project, and replace public_html link
+```bash
+ssh -p <port> <host@ip>
+cd domains/
+rm -rf <domain-name>
+cd ..
+rm public_html
+cd domains/
+git clone <git-project-repo> <domain-name>
+cd ~
+ln -s domains/<domain-name>/public public_html
+cd domains/<domain-name>
+ln -s public public_html
+<install-composer>
+php composer.phar install
+```
+### 2. Install Composer
+```bash
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+```
+### 3. Install Node.js
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+source ~/.bashrc
+nvm --version
+nvm ls-remote
+nvm install <version>
+node --v
+```
+### 4. Install project dependencies
+```bash
+php composer.phar install --optimize-autoloader
+npm install --production
+```
+### 5. Configure .env
+```bash
+cp .env.example .env
+php artisan key:generate --ansi
+nano .env
+```
+```bash
+APP_NAME="<project-name>"
+APP_ENV=production
+APP_DEBUG = false
+APP_URL=http<with 's' if ssl>://<server_domain_or_IP>
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=<db-database>
+DB_USERNAME=<db-username>
+DB_PASSWORD=<db-password>
+```
+```bash
+php artisan storage:link
+php artisan migrate:fresh --seed
+```
+### 6. Laravel optimization
+```bash
+php artisan config:cache
+php artisan event:cache
+php artisan route:cache
+php artisan view:cache
