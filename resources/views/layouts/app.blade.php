@@ -22,7 +22,7 @@
 </head>
 
 <body class="pt-16 bg-white">
-    <nav class="fixed top-0 z-50 w-full shadow backdrop-blur-xl bg-white/80" x-data="{ navbarOpen: false }">
+    <nav class="fixed top-0 z-50 w-full shadow backdrop-blur-lg bg-white/75" x-data="{ navbarOpen: false }">
         <div class="container flex flex-wrap justify-between px-4 mx-auto xl:max-w-7xl md:px-8">
             <a href="{{ route('home') }}" class="py-4">
                 <img src="{{ asset('/images/logo-inspektorat.svg') }}" alt="Logo" class="h-8">
