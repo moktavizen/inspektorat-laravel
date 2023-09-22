@@ -117,12 +117,19 @@ cd /var/www/
 git clone https://github.com/av1st78/inspektorat-gresik.git
 ```
 
-### 7. Configure directory permissions
+### 7. Install project dependecies
+
+```bash
+cd /path/to/your/laravel/root/directory
+composer install --optimize-autoloader
+npm install --production
+```
+
+### 8. Configure directory permissions
 
 ```bash
 chown root:root /var/www
 chmod 755 /var/www/
-cd /path/to/your/laravel/root/directory
 chown -R www-data:www-data /path/to/your/laravel/root/directory
 chmod -R 774 /path/to/your/laravel/root/directory
 usermod -a -G www-data ubuntu
@@ -132,7 +139,7 @@ chgrp -R www-data storage bootstrap/cache
 chmod -R ug+rwx storage bootstrap/cache
 ```
 
-### 8. Configure NGINX
+### 9. Configure NGINX
 
 ```bash
 nano /etc/nginx/sites-available/<project-name>
@@ -175,13 +182,6 @@ nano /etc/nginx/sites-available/<project-name>
 ln -s /etc/nginx/sites-available/<project-name> /etc/nginx/sites-enabled/
 nginx -t
 systemctl reload nginx
-```
-
-### 9. Install project dependecies
-
-```bash
-composer install --optimize-autoloader
-npm install --production
 ```
 
 ### 10. Configure .env
