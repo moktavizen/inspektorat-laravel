@@ -120,7 +120,7 @@ git clone https://github.com/av1st78/inspektorat-gresik.git
 ### 7. Install project dependecies
 
 ```bash
-cd /path/to/your/laravel/root/directory
+cd /var/www/inspektorat-gresik
 composer install --optimize-autoloader
 npm install --production
 ```
@@ -130,11 +130,11 @@ npm install --production
 ```bash
 chown root:root /var/www
 chmod 755 /var/www/
-chown -R www-data:www-data /path/to/your/laravel/root/directory
-chmod -R 774 /path/to/your/laravel/root/directory
+chown -R www-data:www-data /var/www/inspektorat-gresik
+chmod -R 774 /var/www/inspektorat-gresik
 usermod -a -G www-data ubuntu
-find /path/to/your/laravel/root/directory -type f -exec chmod 644 {} \;    
-find /path/to/your/laravel/root/directory -type d -exec chmod 755 {} \;
+find /var/www/inspektorat-gresik -type f -exec chmod 644 {} \;    
+find /var/www/inspektorat-gresik -type d -exec chmod 755 {} \;
 chgrp -R www-data storage bootstrap/cache
 chmod -R ug+rwx storage bootstrap/cache
 ```
@@ -142,14 +142,14 @@ chmod -R ug+rwx storage bootstrap/cache
 ### 9. Configure NGINX
 
 ```bash
-nano /etc/nginx/sites-available/<project-name>
+nano /etc/nginx/sites-available/inspektorat-gresik
 ```
 ```nginx
  server {
         listen 80;
         listen [::]:80;
         server_name <server_domain_or_IP>;
-        root /var/www/<project-name>/public;
+        root /var/www/inspektorat-gresik/public;
     
         add_header X-Frame-Options "SAMEORIGIN";
         add_header X-Content-Type-Options "nosniff";
@@ -179,7 +179,7 @@ nano /etc/nginx/sites-available/<project-name>
     }
 ```
 ```bash
-ln -s /etc/nginx/sites-available/<project-name> /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/inspektorat-gresik /etc/nginx/sites-enabled/
 nginx -t
 systemctl reload nginx
 ```
@@ -192,7 +192,7 @@ php artisan key:generate --ansi
 nano .env
 ```
 ```bash
-APP_NAME="<project-name>"
+APP_NAME="inspektorat-gresik"
 APP_ENV=production
 APP_DEBUG = false
 APP_URL=http<with 's' if ssl>://<server_domain_or_IP>
@@ -272,7 +272,7 @@ php artisan key:generate --ansi
 nano .env
 ```
 ```bash
-APP_NAME="<project-name>"
+APP_NAME="Inspektorat Gresik"
 APP_ENV=production
 APP_DEBUG = false
 APP_URL=http<with 's' if ssl>://<server_domain_or_IP>
