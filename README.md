@@ -76,7 +76,7 @@ reboot
 ```bash
 ssh -i <keypair-name> <host@ip>
 sudo su
-apt install openssl php-bcmath php-curl php-json php-mbstring php-mysql php-tokenizer php-xml php-zip php-fpm php-intl -y
+apt install openssl php-bcmath php-curl php-json php-mbstring php-mysql php-tokenizer php-xml php-fpm php-intl php-zip zip unzip -y
 ```
 
 ### 3. Install NGINX
