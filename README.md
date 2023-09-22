@@ -26,7 +26,7 @@ docker run --rm \
 ### 3. Copy `.env.example` into `.env`
 
 ```bash
-cp .env.example .env
+cp -p .env.example .env
 ```
 
 ### 4. Start the project in detached mode
@@ -189,7 +189,7 @@ systemctl reload nginx
 ### 10. Configure .env
 
 ```bash
-cp .env.example .env
+cp -p .env.example .env
 php artisan key:generate --ansi
 nano .env
 ```
@@ -269,7 +269,7 @@ npm install --production
 ### 5. Configure .env
 
 ```bash
-cp .env.example .env
+cp -p .env.example .env
 php artisan key:generate --ansi
 nano .env
 ```
