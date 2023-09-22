@@ -120,9 +120,13 @@ git clone https://github.com/av1st78/inspektorat-gresik.git
 ### 7. Install project dependecies
 
 ```bash
-cd /var/www/inspektorat-gresik
+chown -R www-data:www-data /var/www/inspektorat-gresik
+usermod -a -G www-data ubuntu
 chmod -R 774 /var/www/inspektorat-gresik
 exit
+logout
+ssh -i <keypair-name> <host@ip>
+cd /var/www/inspektorat-gresik
 composer install --optimize-autoloader
 npm install --production
 ```
@@ -131,8 +135,6 @@ npm install --production
 
 ```bash
 sudo su
-chown -R www-data:www-data /var/www/inspektorat-gresik
-usermod -a -G www-data ubuntu
 find /var/www/inspektorat-gresik -type f -exec chmod 644 {} \;    
 find /var/www/inspektorat-gresik -type d -exec chmod 755 {} \;
 chgrp -R www-data storage bootstrap/cache
@@ -192,7 +194,7 @@ php artisan key:generate --ansi
 nano .env
 ```
 ```bash
-APP_NAME="inspektorat-gresik"
+APP_NAME="Inspektorat Gresik"
 APP_ENV=production
 APP_DEBUG = false
 APP_URL=http<with 's' if ssl>://<server_domain_or_IP>
