@@ -121,6 +121,8 @@ git clone https://github.com/av1st78/inspektorat-gresik.git
 
 ```bash
 cd /var/www/inspektorat-gresik
+chmod -R 774 /var/www/inspektorat-gresik
+exit
 composer install --optimize-autoloader
 npm install --production
 ```
@@ -128,10 +130,8 @@ npm install --production
 ### 8. Configure directory permissions
 
 ```bash
-chown root:root /var/www
-chmod 755 /var/www/
+sudo su
 chown -R www-data:www-data /var/www/inspektorat-gresik
-chmod -R 774 /var/www/inspektorat-gresik
 usermod -a -G www-data ubuntu
 find /var/www/inspektorat-gresik -type f -exec chmod 644 {} \;    
 find /var/www/inspektorat-gresik -type d -exec chmod 755 {} \;
