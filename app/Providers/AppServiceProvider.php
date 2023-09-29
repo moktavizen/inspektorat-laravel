@@ -28,9 +28,10 @@ class AppServiceProvider extends ServiceProvider
                 Service::orderBy('updated_at', 'desc')
                     ->get()
             );
+
             View::share(
-                'contacts',
-                Contact::get()
+                'contact',
+                Contact::first()
             );
         }
     }

@@ -87,7 +87,13 @@ apt autoremove
 apt install nginx -y
 ```
 
-### 4. Install Composer
+### 4. Install Cron
+
+```bash
+apt install cron -y
+```
+
+### 5. Install Composer
 
 ```bash
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -97,7 +103,7 @@ php -r "unlink('composer-setup.php');"
 mv composer.phar /usr/local/bin/composer
 ```
 
-### 5. Install Node.js
+### 6. Install Node.js
 
 ```bash
 apt update
@@ -110,14 +116,14 @@ apt update
 apt install nodejs -y
 ```
 
-### 6. Clone the project
+### 7. Clone the project
 
 ```bash
 cd /var/www/
 git clone https://github.com/av1st78/inspektorat-gresik.git
 ```
 
-### 7. Install project dependecies
+### 8. Install project dependecies
 
 ```bash
 chown -R www-data:www-data /var/www/inspektorat-gresik
@@ -131,7 +137,7 @@ composer install --optimize-autoloader
 npm install --production
 ```
 
-### 8. Configure directory permissions
+### 9. Configure directory permissions
 
 ```bash
 sudo su
@@ -141,7 +147,7 @@ chgrp -R www-data storage bootstrap/cache
 chmod -R ug+rwx storage bootstrap/cache
 ```
 
-### 9. Configure NGINX
+### 10. Configure NGINX
 
 ```bash
 nano /etc/nginx/sites-available/inspektorat-gresik
@@ -186,7 +192,7 @@ nginx -t
 systemctl reload nginx
 ```
 
-### 10. Configure .env
+### 11. Configure .env
 
 ```bash
 cp -p .env.example .env
@@ -210,7 +216,14 @@ php artisan storage:link
 php artisan migrate:fresh --seed
 ```
 
-### 11. Laravel optimization
+### 12. Configure Cron Task
+
+```bash
+crontab -e
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+```
+
+### 13. Laravel optimization
 
 ```bash
 php artisan config:cache

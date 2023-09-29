@@ -90,7 +90,7 @@
             </div>
         </div>
     </section>
-    <section class="bg-center bg-cover docs bg-contact py-14 md:py-20">
+    <section class="bg-center bg-cover bg-contact py-14 md:py-20">
         <div class="container px-4 mx-auto xl:max-w-7xl md:px-8">
             <div
                 class="flex flex-col items-center justify-between text-center text-white md:flex-row gap-7 md:gap-14 md:text-start">
@@ -116,7 +116,7 @@
         </div>
     </section>
 
-    <section class="py-8 md:py-20 bg-neutral-50">
+    <section class="py-14 md:py-20 bg-neutral-50">
         <div class="container mx-auto text-center xl:max-w-7xl sm:px-4 md:px-8">
             <h2 class="text-2xl font-bold lg:text-4xl text-neutral-800 mb-7 md:mb-9">
                 Agenda Inspektorat
@@ -163,38 +163,36 @@
             </a>
         </div>
     </section>
-    <section class="contact bg-neutral-50 py-14 md:py-20">
+    <section class="bg-neutral-50 py-14 md:py-20">
         <div class="container px-4 mx-auto xl:max-w-7xl md:px-8">
             <div class="max-w-[592px] mx-auto text-center text-neutral-800">
                 <h2 class="mb-5 text-2xl font-bold lg:text-4xl">Ada pertanyaan untuk kami?</h2>
-                @foreach ($contacts as $contact)
-                    <div class="text-base lg:text-xl">
-                        Hubungi <a href="tel:+62{{ $contact->phone }}" class="hover:underline">
-                            {{ $contact->phone }}</a>
-                        atau isi formulir berikut untuk mengirim pesan ke email kami!
+                <div class="text-base lg:text-xl">
+                    Hubungi <a href="tel:+62{{ $contact->phone }}" class="hover:underline">
+                        {{ $contact->phone }}</a>
+                    atau isi formulir berikut untuk mengirim pesan ke email kami!
+                </div>
+                <form action="mailto:{{ $contact->email }}" method="post" encType="text/plain">
+                    <div class="grid grid-cols-1 text-sm md:grid-cols-2 gap-x-8 gap-y-2 md:gap-y-5 my-9 lg:text-lg">
+                        <input
+                            class="p-2 border border-gray-200 rounded form-input focus:border-teal-600 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
+                            type="text" name="nama" id="nama" placeholder="Nama" />
+                        <input
+                            class="p-2 border border-gray-200 rounded form-input focus:border-teal-600 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
+                            type="text" name="email" id="email" placeholder="Email" />
+                        <input
+                            class="p-2 border border-gray-200 rounded form-input focus:border-teal-600 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
+                            type="text" name="perihal" id="perihal" placeholder="Perihal" />
+                        <input
+                            class="p-2 border border-gray-200 rounded form-input focus:border-teal-600 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
+                            type="text" name="no.telp." id="no.telp." placeholder="No. Telp." />
+                        <textarea
+                            class="p-2 border border-gray-200 rounded form-textarea md:col-span-2 focus:border-teal-600 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
+                            name="pesan" id="pesan" placeholder="Pesan" rows="4"></textarea>
                     </div>
-                    <form action="mailto:{{ $contact->email }}" method="post" encType="text/plain">
-                        <div class="grid grid-cols-1 text-sm md:grid-cols-2 gap-x-8 gap-y-2 md:gap-y-5 my-9 lg:text-lg">
-                            <input
-                                class="p-2 border border-gray-200 rounded form-input focus:border-teal-600 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
-                                type="text" name="nama" id="nama" placeholder="Nama" />
-                            <input
-                                class="p-2 border border-gray-200 rounded form-input focus:border-teal-600 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
-                                type="text" name="email" id="email" placeholder="Email" />
-                            <input
-                                class="p-2 border border-gray-200 rounded form-input focus:border-teal-600 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
-                                type="text" name="perihal" id="perihal" placeholder="Perihal" />
-                            <input
-                                class="p-2 border border-gray-200 rounded form-input focus:border-teal-600 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
-                                type="text" name="no.telp." id="no.telp." placeholder="No. Telp." />
-                            <textarea
-                                class="p-2 border border-gray-200 rounded form-textarea md:col-span-2 focus:border-teal-600 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
-                                name="pesan" id="pesan" placeholder="Pesan" rows="4"></textarea>
-                        </div>
-                        <input type="submit" value="Kirim"
-                            class="px-20 py-3 text-sm font-semibold text-white bg-teal-600 rounded-md shadow-md cursor-pointer lg:text-lg md:py-4 md:px-24 hover:bg-teal-600/70" />
-                    </form>
-                @endforeach
+                    <input type="submit" value="Kirim"
+                        class="px-20 py-3 text-sm font-semibold text-white bg-teal-600 rounded-md shadow-md cursor-pointer lg:text-lg md:py-4 md:px-24 hover:bg-teal-600/70" />
+                </form>
             </div>
         </div>
     </section>

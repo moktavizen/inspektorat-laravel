@@ -9,9 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Inspektorat | Gresik</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('/images/favicon.ico') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=poppins:400,500,600,700" rel="stylesheet" />
     <style>
         [x-cloak] {
             display: none !important;
@@ -132,29 +131,26 @@
                         </span>
                     </div>
                     <ul class="flex flex-col gap-2 text-sm text-neutral-500 lg:text-base">
-                        @foreach ($contacts as $contact)
-                            <li>
-                                <a href="https://www.google.com/maps/search/{{ $contact->address }}" target="blank"
-                                    class="hover:text-teal-600">
-                                    Alamat:
-                                    <br />
-                                    {{ $contact->address }}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="tel:+62{{ $contact->phone }}" class="hover:text-teal-600">
-                                    Telepon: <br />
-                                    {{ $contact->phone }}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="mailto:{{ $contact->email }}" class="hover:text-teal-600">
-                                    Email: <br />
-                                    {{ $contact->email }}
-                                </a>
-                            </li>
-                        @endforeach
-
+                        <li>
+                            <a href="https://www.google.com/maps/search/{{ $contact->address }}" target="blank"
+                                class="hover:text-teal-600">
+                                Alamat:
+                                <br />
+                                {{ $contact->address }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+62{{ $contact->phone }}" class="hover:text-teal-600">
+                                Telepon: <br />
+                                {{ $contact->phone }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:{{ $contact->email }}" class="hover:text-teal-600">
+                                Email: <br />
+                                {{ $contact->email }}
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="box">
@@ -183,28 +179,23 @@
                 <div class="box">
                     <div class="mb-2 text-base font-medium text-neutral-800 lg:text-xl">
                         <span class="flex items-center gap-2">
-                            Layanan
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            Pengunjung
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                 class="w-4 h-4">
-                                <path fill-rule="evenodd"
-                                    d="M7.502 6h7.128A3.375 3.375 0 0118 9.375v9.375a3 3 0 003-3V6.108c0-1.505-1.125-2.811-2.664-2.94a48.972 48.972 0 00-.673-.05A3 3 0 0015 1.5h-1.5a3 3 0 00-2.663 1.618c-.225.015-.45.032-.673.05C8.662 3.295 7.554 4.542 7.502 6zM13.5 3A1.5 1.5 0 0012 4.5h4.5A1.5 1.5 0 0015 3h-1.5z"
-                                    clip-rule="evenodd" />
-                                <path fill-rule="evenodd"
-                                    d="M3 9.375C3 8.339 3.84 7.5 4.875 7.5h9.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 013 20.625V9.375zM6 12a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V12zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zM6 15a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V15zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zM6 18a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V18zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75z"
-                                    clip-rule="evenodd" />
+                                <path
+                                    d="M15.5 2A1.5 1.5 0 0014 3.5v13a1.5 1.5 0 001.5 1.5h1a1.5 1.5 0 001.5-1.5v-13A1.5 1.5 0 0016.5 2h-1zM9.5 6A1.5 1.5 0 008 7.5v9A1.5 1.5 0 009.5 18h1a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0010.5 6h-1zM3.5 10A1.5 1.5 0 002 11.5v5A1.5 1.5 0 003.5 18h1A1.5 1.5 0 006 16.5v-5A1.5 1.5 0 004.5 10h-1z" />
                             </svg>
-
                         </span>
                     </div>
-                    <ul class="flex flex-col gap-2 text-sm text-neutral-500 lg:text-base">
-                        @foreach ($services as $service)
-                            <li>
-                                <a href="{{ route('viewService', $service) }}" class="hover:text-teal-600">
-                                    {{ $service->title }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
+                    <div class="flex flex-col gap-1 text-sm text-neutral-500 lg:text-base">
+                        <div class="flex justify-between gap-2">
+                            <span>Minggu ini</span><span>{{ $visitorStatistic->weekly_visitors }}</span>
+                        </div>
+                        <hr>
+                        <div class="flex justify-between gap-2">
+                            <span>Total</span><span>{{ $visitorStatistic->total_visitors }}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

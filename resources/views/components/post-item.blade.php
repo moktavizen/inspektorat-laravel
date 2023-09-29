@@ -7,8 +7,9 @@
                 {{ $post->title }}
             </h3>
             <div class="text-sm lg:text-lg md:mb-1">
-                Diterbitkan: <span
-                    class="whitespace-nowrap">{{ \Carbon\Carbon::parse($post->updated_at)->format('d/m/Y') }}</span>
+                <span class="whitespace-nowrap">{{ \Carbon\Carbon::parse($post->updated_at)->format('d/m/Y') }} •
+                    {{ $post->views }} x
+                    dilihat</span>
             </div>
         </div>
     </div>

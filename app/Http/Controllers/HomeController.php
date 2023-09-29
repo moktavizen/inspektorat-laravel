@@ -7,6 +7,8 @@ use App\Models\DropdownItem;
 use App\Models\Menu;
 use App\Models\Post;
 use App\Models\Service;
+use App\Models\VisitorStatistic;
+use Carbon\Carbon;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -16,6 +18,12 @@ class HomeController extends Controller
      */
     public function index(): View
     {
+        // if (session()->has('visited') === false) {
+        VisitorStatistic::first()->increment('weekly_visitors');
+        VisitorStatistic::first()->increment('total_visitors');
+        //     session(['visited' => true]);
+        // }
+
         return view('home', [
             'posts' => Post::orderBy('updated_at', 'desc')
                 ->take(3)
@@ -64,6 +72,10 @@ class HomeController extends Controller
      */
     public function showPost(Post $post): View
     {
+        $post->timestamps = false;
+        $post->increment('views');
+        $post->timestamps = true;
+
         return view('post.view', ['post' => $post]);
     }
 }

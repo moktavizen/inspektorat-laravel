@@ -13,6 +13,7 @@
                                     <dt class="sr-only">Date</dt>
                                     <dd class="absolute inset-x-0 top-0 text-neutral-800">
                                         <time>{{ \Carbon\Carbon::parse($post->updated_at)->format('d/m/Y') }}</time>
+                                        <span> • {{ $post->views }} x dilihat</span>
                                     </dd>
                                 </dl>
                             </div>

@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('visitor_statistics', function (Blueprint $table) {
             $table->id();
-            $table->integer('views');
-            $table->string('title', 2048);
-            $table->string('slug', 2048);
-            $table->string('thumbnail', 2048);
-            $table->longText('body');
-            $table->foreignIdFor(User::class, 'user_id');
+            $table->integer('weekly_visitors');
+            $table->integer('total_visitors');
             $table->timestamps();
         });
     }
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('visitor_statistics');
     }
 };
