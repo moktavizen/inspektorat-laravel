@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function () {
             VisitorStatistic::query()->update(['weekly_visitors' => 0]);
-        })->everyMinute();
+        })->weekly();
     }
 
     /**
