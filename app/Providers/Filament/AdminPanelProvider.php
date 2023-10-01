@@ -72,7 +72,6 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->darkMode(false)
-            ->font('Poppins')
             ->favicon(asset('images/favicon.ico'))
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
                 return $builder->groups([
