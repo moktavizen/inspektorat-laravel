@@ -44,7 +44,9 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->passwordReset()
             ->profile()
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->colors([
                 'primary' => Color::Teal,
             ])
@@ -72,7 +74,7 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->darkMode(false)
+            ->darkMode(true)
             ->favicon(asset('images/favicon.ico'))
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
                 return $builder->groups([

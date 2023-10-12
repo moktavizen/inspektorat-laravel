@@ -15,7 +15,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
-use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
+use FilamentTiptapEditor\TiptapEditor;
 
 class AgendaResource extends Resource
 {
@@ -45,7 +45,7 @@ class AgendaResource extends Resource
                             ->rows(4)
                             ->required()
                             ->maxLength(2048),
-                        TinyEditor::make('body')
+                        TiptapEditor::make('body')
                             ->label('Content')
                             ->required()
                             ->columnSpanFull(),

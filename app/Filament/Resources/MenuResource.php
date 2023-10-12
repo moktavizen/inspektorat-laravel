@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Set;
 use Illuminate\Support\Str;
-use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
+use FilamentTiptapEditor\TiptapEditor;
 
 class MenuResource extends Resource
 {
@@ -43,7 +43,7 @@ class MenuResource extends Resource
                         Forms\Components\TextInput::make('slug')
                             ->required()
                             ->maxLength(2048),
-                        TinyEditor::make('body')
+                        TiptapEditor::make('body')
                             ->label('Content')
                             ->required()
                             ->columnSpanFull(),

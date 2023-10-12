@@ -49,6 +49,6 @@ implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return str_ends_with($this->email, '@gresikkab.go.id');
+        return str_ends_with($this->email, '@gmail.com');
     }
 }

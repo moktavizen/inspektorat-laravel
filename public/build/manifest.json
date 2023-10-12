@@ -1,6 +1,6 @@
 {
   "public/images/contact.png": {
-    "file": "assets/contact-eaa0982d.png",
+    "file": "assets/contact-928cc465.png",
     "src": "public/images/contact.png"
   },
   "public/images/hero.png": {
@@ -8,9 +8,14 @@
     "src": "public/images/hero.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-168ea49a.css",
+    "file": "assets/app-e47e47f5.css",
     "isEntry": true,
     "src": "resources/css/app.css"
+  },
+  "resources/css/filament/admin/theme.css": {
+    "file": "assets/theme-033ff78b.css",
+    "isEntry": true,
+    "src": "resources/css/filament/admin/theme.css"
   },
   "resources/js/app.js": {
     "file": "assets/app-82581d7c.js",
