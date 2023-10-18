@@ -244,7 +244,7 @@ Mengatur pekerjaan cron untuk menjalankan tugas terjadwal aplikasi Laravel.
 
 ```bash
 crontab -e
-* * * * * cd /var/www/inspektorat-laravel && php artisan schedule:run >> /dev/null 2>&1
+* * * * * cd /var/www/inspektorat-gresik && php artisan schedule:run >> /dev/null 2>&1
 ```
 
 ### 13. Optimisasi Laravel
