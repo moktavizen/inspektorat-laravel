@@ -62,7 +62,9 @@ php artisan make:filament-user
 
 Instruction using SSH on Ubuntu 22.04 VM
 
-### 1. SSH and update the server
+### 1. SSH dan Pembaruan Server
+
+Mengakses server menggunakan SSH dengan kunci, kemudian melakukan pembaruan sistem dan reboot server.
 
 ```bash
 ssh -i <keypair-name> <host@ip>
@@ -71,7 +73,9 @@ apt update && apt upgrade -y
 reboot
 ```
 
-### 2. Install required PHP extension for Laravel
+### 2. Instal Ekstensi PHP yang Dibutuhkan untuk Laravel
+
+Menginstal beragam ekstensi PHP yang diperlukan untuk menjalankan aplikasi Laravel.
 
 ```bash
 ssh -i <keypair-name> <host@ip>
@@ -79,7 +83,9 @@ sudo su
 apt install openssl php-bcmath php-curl php-json php-mbstring php-mysql php-tokenizer php-xml php-fpm php-intl php-zip zip unzip -y
 ```
 
-### 3. Install NGINX
+### 3. Instalasi NGINX
+
+Menghapus Apache2 (jika ada) dan menginstal server web NGINX sebagai penggantinya.
 
 ```bash
 apt purge apache2
@@ -87,13 +93,17 @@ apt autoremove
 apt install nginx -y
 ```
 
-### 4. Install Cron
+### 4. Instalasi Cron
+
+Menginstal layanan cron untuk mengelola pekerjaan terjadwal di server.
 
 ```bash
 apt install cron -y
 ```
 
-### 5. Install Composer
+### 5. Instalasi Composer
+
+Mengunduh dan menginstal Composer, alat manajemen paket PHP.
 
 ```bash
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -103,7 +113,9 @@ php -r "unlink('composer-setup.php');"
 mv composer.phar /usr/local/bin/composer
 ```
 
-### 6. Install Node.js
+### 6. Instalasi Node.js
+
+Menginstal Node.js dan mengatur sumber paket Node.js pada server.
 
 ```bash
 apt update
@@ -116,14 +128,18 @@ apt update
 apt install nodejs -y
 ```
 
-### 7. Clone the project
+### 7. Clone Proyek
+
+Mengunduh proyek dari repositori Git yang ditentukan.
 
 ```bash
 cd /var/www/
 git clone https://github.com/av1st78/inspektorat-gresik.git
 ```
 
-### 8. Install project dependecies
+### 8. Instalasi Dependensi Proyek
+
+Mengatur izin file dan folder proyek, menginstal dependensi PHP dan JavaScript proyek.
 
 ```bash
 chown -R www-data:www-data /var/www/inspektorat-gresik
@@ -137,7 +153,9 @@ composer install --optimize-autoloader
 npm install --production
 ```
 
-### 9. Configure directory permissions
+### 9. Konfigurasi Izin Direktori
+
+Mengatur izin file dan folder proyek sesuai dengan standar keamanan Laravel.
 
 ```bash
 sudo su
@@ -147,7 +165,9 @@ chgrp -R www-data storage bootstrap/cache
 chmod -R ug+rwx storage bootstrap/cache
 ```
 
-### 10. Configure NGINX
+### 10. Konfigurasi NGINX
+
+Mengonfigurasi NGINX untuk mengarahkan permintaan web ke aplikasi Laravel.
 
 ```bash
 nano /etc/nginx/sites-available/inspektorat-gresik
@@ -192,7 +212,9 @@ nginx -t
 systemctl reload nginx
 ```
 
-### 11. Configure .env
+### 11. Konfigurasi .env
+
+Mengkonfigurasi berkas lingkungan (.env) aplikasi Laravel dengan informasi yang sesuai dengan server.
 
 ```bash
 cp -p .env.example .env
@@ -216,14 +238,18 @@ php artisan storage:link
 php artisan migrate:fresh --seed
 ```
 
-### 12. Configure Cron Task
+### 12. Konfigurasi Tugas Cron
+
+Mengatur pekerjaan cron untuk menjalankan tugas terjadwal aplikasi Laravel.
 
 ```bash
 crontab -e
-* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+* * * * * cd /var/www/inspektorat-laravel && php artisan schedule:run >> /dev/null 2>&1
 ```
 
-### 13. Laravel optimization
+### 13. Optimisasi Laravel
+
+Mengoptimalkan aplikasi Laravel dengan meng-cache konfigurasi, event, rute, tampilan, dan ikon.
 
 ```bash
 php artisan config:cache
