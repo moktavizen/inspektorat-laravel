@@ -74,7 +74,7 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->darkMode(true)
+            ->darkMode(false)
             ->favicon(asset('images/favicon.ico'))
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
                 return $builder->groups([
