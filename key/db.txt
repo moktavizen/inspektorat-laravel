@@ -1,0 +1,4 @@
+database: inspektorat-gresik-db
+username: 10futtvcp2y7gskj2v0s
+host: aws.connect.psdb.cloud
+password: pscale_pw_o8mUfhVpBFD7zAIdZyGk5LTnaCUohi5WpL7WNe8n7DK
