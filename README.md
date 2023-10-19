@@ -69,8 +69,7 @@ Mengakses server menggunakan SSH dengan kunci, kemudian melakukan pembaruan sist
 ```bash
 ssh -i <keypair-name> <host@ip>
 sudo su
-apt update && apt upgrade -y
-reboot
+apt update && apt upgrade -y && reboot
 ```
 
 ### 2. Instal Ekstensi PHP yang Dibutuhkan untuk Laravel
