@@ -34,7 +34,7 @@
                 </svg>
             </button>
             <ul class="xl:flex flex-col w-[1024px] pb-6 xl:w-auto xl:flex-row xl:place-items-center gap-4 xl:py-0 xl:gap-0 text-base xl:text-lg "
-                :class=" navbarOpen ? 'flex' : 'hidden'" x-cloak x-transition>
+                :class="navbarOpen ? 'flex' : 'hidden'" x-cloak x-transition>
                 <li>
                     <a href="{{ route('home') }}" class="py-[19px] xl:pr-6 text-neutral-800 hover:text-teal-600">
                         Beranda
