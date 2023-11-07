@@ -21,8 +21,8 @@ export default {
                 sans: ["Inter var", ...defaultTheme.fontFamily.sans],
             },
             backgroundImage: {
-                hero: "url('/public/images/hero.png')",
-                contact: "url('/public/images/contact.png')",
+                hero: "url('/public/images/hero.webp')",
+                contact: "url('/public/images/contact.webp')",
             },
         },
     },

@@ -1,14 +1,14 @@
 {
-  "public/images/contact.png": {
-    "file": "assets/contact-928cc465.png",
-    "src": "public/images/contact.png"
+  "public/images/contact.webp": {
+    "file": "assets/contact-c0ac9e96.webp",
+    "src": "public/images/contact.webp"
   },
-  "public/images/hero.png": {
-    "file": "assets/hero-6522c12d.png",
-    "src": "public/images/hero.png"
+  "public/images/hero.webp": {
+    "file": "assets/hero-4b8045ac.webp",
+    "src": "public/images/hero.webp"
   },
   "resources/css/app.css": {
-    "file": "assets/app-e47e47f5.css",
+    "file": "assets/app-51473772.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },

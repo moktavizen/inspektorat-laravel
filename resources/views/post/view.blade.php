@@ -20,7 +20,7 @@
                             <div class="mt-6">
                                 <ul class="flex flex-wrap -mx-5 -mt-6 text-sm leading-6">
                                     <li class="flex items-center px-5 mt-6 font-medium whitespace-nowrap">
-                                        <img class="mr-3 rounded-full w-9 h-9" src="{{ asset('/images/profile.jpg') }}"
+                                        <img class="mr-3 rounded-full w-9 h-9" src="{{ asset('/images/profile.webp') }}"
                                             alt="profile" />
                                         <div class="text-sm leading-4">
                                             <div class="text-neutral-800">{{ $post->user->name }}</div>

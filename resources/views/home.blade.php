@@ -63,7 +63,7 @@
     </section>
     <section class="about py-14 md:py-20">
         <div class="container flex flex-col items-center justify-center px-4 mx-auto xl:max-w-7xl md:px-8 md:flex-row">
-            <img class="rounded-lg w-full md:w-[74.5%] object-cover shadow-xl" src={{ asset('/images/about.jpg') }} />
+            <img class="rounded-lg w-full md:w-[74.5%] object-cover shadow-xl" src={{ asset('/images/about.webp') }} />
             <div class="w-[90%] bg-teal-600 p-4 sm:p-8 lg:p-10 rounded-lg mt-[-14.5%] md:mt-0 md:ml-[-14.5%] shadow-xl">
                 <div class="text-white content">
                     <h2 class="text-2xl font-bold lg:text-4xl">Profil</h2>
