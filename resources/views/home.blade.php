@@ -119,7 +119,7 @@
     <section class="py-14 md:py-20 bg-neutral-50">
         <div class="container mx-auto text-center xl:max-w-7xl sm:px-4 md:px-8">
             <h2 class="text-2xl font-bold lg:text-4xl text-neutral-800 mb-7 md:mb-9">
-                Agenda Inspektorat
+                Agenda
             </h2>
             <div
                 class="px-4 py-4 bg-white shadow-sm text-start md:py-12 md:px-14 rounded-xl ring-1 ring-gray-950/5 mb-7 md:mb-9">
