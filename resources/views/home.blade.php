@@ -96,7 +96,7 @@
                 class="flex flex-col items-center justify-between text-center text-white md:flex-row gap-7 md:gap-14 md:text-start">
                 <div>
                     <h2 class="mb-4 text-2xl font-bold lg:text-4xl md:mb-7">
-                        Dokumen Inspektorat
+                        Dokumen Publik
                     </h2>
                     <div class="text-base lg:text-xl">
                         <a href="{{ route('docs') }}" class="hover:underline">
