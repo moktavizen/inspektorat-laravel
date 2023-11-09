@@ -136,6 +136,8 @@ cd /var/www/
 git clone https://github.com/av1st78/inspektorat-gresik.git
 ```
 
+Jika menggunakan zip, ekstrak zip-nya kemudian pindahkan ke direktori /var/www/.
+
 ### 8. Instalasi Dependensi Proyek
 
 Mengatur izin file dan folder proyek, menginstal dependensi PHP dan JavaScript proyek.
