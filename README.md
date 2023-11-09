@@ -7,7 +7,7 @@ Instruction using Laravel Sail Docker
 ### 1. Clone the project
 
 ```bash
-git clone https://github.com/av1st78/inspektorat-gresik.git
+git clone https://github.com/moktavizen/inspektorat-laravel.git
 ```
 
 ### 2. Run `composer install`
@@ -139,7 +139,7 @@ Mengunduh proyek dari repositori Git yang ditentukan.
 
 ```bash
 cd /var/www/
-git clone https://github.com/av1st78/inspektorat-gresik.git
+git clone https://github.com/moktavizen/inspektorat-laravel.git
 ```
 
 Jika menggunakan zip, ekstrak zip-nya kemudian pindahkan ke direktori /var/www/.
